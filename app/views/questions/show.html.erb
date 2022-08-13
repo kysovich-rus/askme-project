@@ -1,5 +1,5 @@
 <div class="container">
-    <h2 class="title-lg mb">Вопрос <%= @question.id %></h2>
+    <h2 class="title-lg mb"><%= fa_icon('eye-slash') if @question.hidden? %> Вопрос <%= @question.id %></h2>
 
     <p class="mb-sm"><%= @question.body %></p>
     <p>user_id: <b><%= @question.user_id %></b></p>

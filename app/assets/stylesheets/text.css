@@ -25,4 +25,5 @@ a, button {
 
 .text-hidden {
     opacity: 50%;
+    font-style: italic;
 }
