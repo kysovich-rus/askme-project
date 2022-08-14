@@ -2,8 +2,7 @@
   <h2 class="title-lg mb">Вопросы</h2>
 
   <% @questions.each do |question| %>
-    <% hidden_class = "text-hidden" if question.hidden? %>
-    <p class="mb-sm <%= hidden_class %>">
+    <p class="mb-sm <%= "text-hidden" if question.hidden? %>">
       <%= link_to "Вопрос ##{question.id}", question_path(question) %>
     </p>
   <% end %>
