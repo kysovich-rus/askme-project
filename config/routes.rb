@@ -3,8 +3,8 @@ Rails.application.routes.draw do
 
   resources :questions do
     member do # member - single instance, collection - all instances
-      put :hide, :reveal
-      patch :hide, :reveal
+      put :toggle
+      patch :toggle
     end
 
   end
