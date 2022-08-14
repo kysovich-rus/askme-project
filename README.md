@@ -1,24 +1,9 @@
-# README
+# ASKME APPLICATION
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Things it can do:
 
-Things you may want to cover:
+* Create/Read/Edit/Delete questions
 
-* Ruby version
+* Show/Reveal questions
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* TBD...
