@@ -34,7 +34,7 @@ class QuestionsController < ApplicationController
   end
 
   def toggle
-    @question.update!(hidden: !hidden?)
+    @question.toggle!(:hidden)
     redirect_to @question
   end
 

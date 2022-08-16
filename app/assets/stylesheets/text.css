@@ -7,6 +7,21 @@ a, button {
   color: #DC2F02;
 }
 
+.message {
+    border-radius: 5px;
+    
+    padding-left: 5%;
+}
+.message-alert {
+    background-color: #DC2F02;
+    color: #eeeeee;
+}
+.message-notice {
+    background-color: #FEE9C3;
+    color: #000000;
+}
+
+
 .title-lg {
   font-size: 175%;
 }
@@ -26,4 +41,8 @@ a, button {
 .text-hidden {
     opacity: 50%;
     font-style: italic;
+}
+
+.text-bold {
+    font-weight: bold;
 }

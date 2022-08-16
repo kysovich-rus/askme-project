@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'sessions/create'
+  get 'sessions/new'
+  get 'users/create'
+  get 'users/new'
   root to: 'questions#index'
 
   resources :questions do
@@ -6,6 +10,8 @@ Rails.application.routes.draw do
       put :toggle
       patch :toggle
     end
-
   end
+
+  resources :users, only: %i[new create destroy]
+  resource :session
 end

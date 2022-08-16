@@ -10,7 +10,20 @@ body {
   width: 100%;
 }
 
-.container {
+.container, .navbar {
   background: #fff;
   padding: 20px;
+}
+
+.navbar {
+    background-color: #370617;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
 }
