@@ -9,4 +9,8 @@ class User < ApplicationRecord
   def downcase_nickname
     nickname.downcase!
   end
+
+  def link_name
+    "@#{nickname}"
+  end
 end
