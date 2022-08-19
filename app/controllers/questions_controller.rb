@@ -29,6 +29,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
+    @question = Question.new
     @questions = Question.all
   end
 
@@ -41,7 +42,7 @@ class QuestionsController < ApplicationController
 
   def toggle
     @question.toggle!(:hidden)
-    redirect_to @question
+    redirect_back fallback_location: root_path
   end
 
   def hidden?
