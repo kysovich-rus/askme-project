@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
+    if @user.save && @user&.nickname
       session[:user_id] = @user.id
       redirect_to root_path, notice: 'Регистрация успешно завершена!'
     else
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
-    if @user.update(user_params)
+    if @user.update(user_params) && @user&.nickname
       redirect_to root_path, notice: 'Обновлены данные пользователя'
     else
       flash.now[:alert] = 'Ошибки при попытке сохранить пользовательские данные'
