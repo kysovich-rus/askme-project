@@ -25,18 +25,20 @@
       <p class="mt"><%= form.label :password_confirmation, 'Подтвердите пароль' %></p>
       <p><%= form.password_field :password_confirmation, class: 'form-text-field' %></p>
 
-      <div class="mt-lg">
-        <!--Не срабатывает confirm-->
-        <%= button_to "Удалить профиль", user_path(@user),
-                      method: :delete,
-                      form: {data: {turbo_confirm: "Вы точно хотите удалить свой профиль?"}},
-                      class: 'text-red text-sm' %>
-      </div>
+      <p class="mt"><%= form.label :header_color, 'Цвет шапки' %></p>
+      <p><%= form.color_field :header_color %></p>
 
       <p class="mt-lg">
         <%= form.submit "Сохранить", class: 'button button-main' %>
         <span class="text-sm">или <%= link_to "Вернуться", :back %></span>
       </p>
     <% end %>
+
+    <div class="mt-lg">
+    <%= button_to "Удалить профиль", user_path(@user),
+                  method: :delete,
+                  confirm: "Вы точно хотите удалить свой профиль?",
+                  class: "text-red text-sm" %>
+  </div>
   </div>
 </div>
