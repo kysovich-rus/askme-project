@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w.]+@[\w]+\.[a-z]+\z/ }
   validates :nickname, presence: true, uniqueness: true, format: { with: /\A\w+\z/ }, length: { maximum: 40 }
+  validates :header_color, format: { with: /\A#[0-9a-f]{6}\z/i }
 
   def link_name
     "@#{nickname}"
