@@ -1,7 +1,7 @@
 <div class="container">
   <h2 class="title-lg mb">Вопросы</h2>
 
-  <%= render @questions %>
+  <%= render @questions.order("created_at desc") %>
 
   <h2 class="title-sm mt">Создайте свой вопрос:</h2>
 

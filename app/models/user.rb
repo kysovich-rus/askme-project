@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
+  has_many :questions
+
   before_validation :downcase_nickname
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w.]+@[\w]+\.[a-z]+\z/ }
