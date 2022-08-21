@@ -1,5 +1,19 @@
 <div class="container">
-  <h2 class="title-lg mb">Вопросы</h2>
+  <h2 class="title-lg mb">
+    Новые пользователи
+  </h2>
+  <div class="users-box">
+    <% @users.each do |user| %>
+      <%= render "users/user_avatar", user: user%>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="title-lg mb">
+    <%= @questions.count %>
+    <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+  </h2>
 
   <% if current_user.nil? %>
     <p class="text-sm"> Нет заданных вопросов...
@@ -11,7 +25,7 @@
   <% elsif @questions.size.zero? %>
     <p class="text-sm">Никто еще не задавал вопросов... <%= link_to "Хотите спросить?", new_question_path %></p>
   <% else %>
-    <%= render @questions.order("created_at desc") %>
+    <%= render @questions %>
   <% end %>
 </div>
 

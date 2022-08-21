@@ -8,6 +8,8 @@
  *= require layout
  *= require button
  *= require form
+ *= require utility
  *
  *= require question
+ *= require users-box
  */

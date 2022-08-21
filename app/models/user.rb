@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   has_secure_password
 
-  has_many :questions
+  has_many :questions, dependent: :delete_all
+  # has_many :asked_questions, class_name: 'Question', foreign_key: :author_id
 
   before_validation :downcase_nickname
 
@@ -16,6 +17,6 @@ class User < ApplicationRecord
   private
 
   def downcase_nickname
-    nickname.downcase! if nickname.present?
+    nickname&.downcase!
   end
 end
