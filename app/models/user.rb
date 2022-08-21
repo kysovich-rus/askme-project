@@ -8,12 +8,12 @@ class User < ApplicationRecord
   validates :header_color, format: { with: /\A#[0-9a-f]{6}\z/i }
 
   def link_name
-    "@#{nickname}"
+    "@#{nickname}" if nickname.present?
   end
 
   private
 
   def downcase_nickname
-    nickname.downcase!
+    nickname.downcase! if nickname.present?
   end
 end
