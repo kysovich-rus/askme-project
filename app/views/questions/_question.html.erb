@@ -1,8 +1,10 @@
-<div class="mt-lg mb-sm">
+<h3 class="title-sm"><%= link_to "Вопрос ##{question.id}", question_path(question) %></h3>
+
+<div class="mt-sm mb-sm">
   <%= simple_format h(question.body) %>
 </div>
 
-<div class="text-sm question-footer">
+<div class="text-sm question-footer mb-lg">
   <div class="text-grey">
     <%= fa_icon('eye-slash') if question.hidden? %>
     <%= link_to "#{question&.author&.link_name}", '#' %> |
