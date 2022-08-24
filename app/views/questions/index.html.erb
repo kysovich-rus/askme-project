@@ -11,25 +11,26 @@
 
 <div class="container">
   <h2 class="title-lg mb">
+    <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
     <%= @questions.count %>
     <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
   </h2>
-
   <% if current_user.nil? %>
-    <p class="text-sm"> Нет заданных вопросов...
+    <p class="text-sm mb">
+      Здравствуйте, Гость!
       <%= link_to "Зарегистрируйтесь", new_user_path %>
       или
-      <%= link_to "войдите", sessions_new_path %>
-      и будьте первым!
+      <%= link_to "войдите", sessions_new_path %>,
+      чтобы сохранять ваши вопросы и их обсуждения.
     </p>
-  <% elsif @questions.size.zero? %>
+  <% end %>
+  <% if @questions.size.zero? %>
     <p class="text-sm">Никто еще не задавал вопросов... <%= link_to "Хотите спросить?", new_question_path %></p>
   <% else %>
     <%= render @questions %>
   <% end %>
 </div>
 
-<% if current_user.present? %>
 <div class="container mt-md">
   <h2 class="title-sm mt">Создайте свой вопрос:</h2>
 
@@ -41,4 +42,3 @@
     <%= link_to "Создать новый вопрос", new_question_path, class: 'button button-main' %>
   </p>
 </div>
-<% end %>
