@@ -1,6 +1,5 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: %i[update show destroy edit toggle]
-  helper_method :author_link
 
   def create 
     @question = Question.create(question_params)
@@ -52,14 +51,6 @@ class QuestionsController < ApplicationController
   end
 
   private
-
-  def author_link
-    if author.present?
-      link_to "#{question&.author&.link_name}", '#'
-    else
-      content_tag :i, "Aнонимус"
-    end
-  end
 
   def question_params
     params.require(:question).permit(:body, :user_id, :author_id)

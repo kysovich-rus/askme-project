@@ -7,7 +7,7 @@
 <div class="text-sm question-footer mb-lg">
   <div class="text-grey">
     <%= fa_icon('eye-slash') if question.hidden? %>
-    <%= link_to "#{question&.author&.link_name}", '#' %> |
+    <%= link_to "#{question.author.link_name}", '#' %> |
     <%= l(question.created_at, format: :short) %>
   </div>
 
