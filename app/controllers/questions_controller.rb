@@ -43,7 +43,7 @@ class QuestionsController < ApplicationController
 
   def toggle
     @question.toggle!(:hidden)
-    redirect_back fallback_location: root_path
+    redirect_back fallback_location: root_path, notice: "Видимость вопроса #{@question.id} изменена"
   end
 
   def hidden?

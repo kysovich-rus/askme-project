@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
     if user.present?
       session[:user_id] = user.id
-      redirect_to root_path, notice: "Произведен вход... Добро пожаловать, #{current_user.link_name}"
+      redirect_to root_path, notice: "Произведен вход... Добро пожаловать, @#{current_user.nickname}!"
     else
       flash.now[:alert] = 'Неверные учетные данные'
       render :new
