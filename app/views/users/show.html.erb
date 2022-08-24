@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="container">
+    <h2 class="title-lg mb-md">Пользователь <%= link_name(@user) %></h2>
+    <p class="text-md">Зарегистрирован: <%= l(@user.created_at, format: :long) %></p>
+    <%= link_to "Изменить", edit_user_path(@user), class: "button button-yellow mt-lg" %>
+  </div>
+</div>
+
+<div class="container mt-sm">
+  <div class="container">
+    <% if @questions.count.zero? %>
+      <p class="text-sm">Этот пользователь еще не задавал вопросов...</p>
+    <% else %>
+      <h2 class="title-lg mb">
+        <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
+        <%= @questions.count %>
+        <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+      </h2>
+      <%= render @questions %>
+    <% end %>
+  </div>
+</div>

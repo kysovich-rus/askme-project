@@ -8,7 +8,7 @@
   <div class="text-grey">
     <%= fa_icon('eye-slash') if question.hidden? %>
     <% if question.author.present? %>
-      <%= link_to "#{link_name(question.author)}", '#' %>
+      <%= link_to "#{link_name(question.author)}", user_path(question.author) %>
     <% else %>
       Гость
     <% end %> |

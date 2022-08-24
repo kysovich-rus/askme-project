@@ -23,6 +23,10 @@ class UsersController < ApplicationController
   def edit
   end
 
+  def show
+    @questions = Question.where(author: @user)
+  end
+
   def update
     if @user.update(user_params) && @user&.nickname
       redirect_to root_path, notice: 'Обновлены данные пользователя'

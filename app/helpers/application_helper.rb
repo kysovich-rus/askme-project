@@ -6,4 +6,8 @@ module ApplicationHelper
     end
     return form_many
   end
+
+  def link_name(user)
+    "@#{user&.nickname}"
+  end
 end

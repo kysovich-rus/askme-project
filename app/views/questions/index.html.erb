@@ -10,11 +10,6 @@
 </div>
 
 <div class="container">
-  <h2 class="title-lg mb">
-    <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
-    <%= @questions.count %>
-    <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
-  </h2>
   <% if current_user.nil? %>
     <p class="text-sm mb">
       Здравствуйте, Гость!
@@ -24,9 +19,14 @@
       чтобы сохранять ваши вопросы и их обсуждения.
     </p>
   <% end %>
-  <% if @questions.size.zero? %>
+  <% if @questions.count.zero? %>
     <p class="text-sm">Никто еще не задавал вопросов... <%= link_to "Хотите спросить?", new_question_path %></p>
   <% else %>
+    <h2 class="title-lg mb">
+      <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
+      <%= @questions.count %>
+      <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+    </h2>
     <%= render @questions %>
   <% end %>
 </div>
