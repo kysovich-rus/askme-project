@@ -2,7 +2,6 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :questions, dependent: :delete_all
-  # has_many :asked_questions, class_name: 'Question', foreign_key: :author_id
 
   before_validation :downcase_nickname
 
