@@ -1,4 +1,11 @@
-<h3 class="title-sm"><%= link_to "Вопрос ##{question.id}", question_path(question) %></h3>
+<div class="question-header">
+   <h3 class="title-sm">
+     <%= link_to "Вопрос ##{question.id}", question_path(question) %>
+   </h3>
+   <p class="text-sm">
+     для <%= link_to "@#{question.user_nickname}", user_path(question.user_nickname), class: "text-grey" %>
+   </p>
+</div>
 
 <div class="mt-sm mb-sm">
   <%= simple_format h(question.body) %>

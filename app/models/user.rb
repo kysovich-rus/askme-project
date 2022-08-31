@@ -2,9 +2,9 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :questions, dependent: :delete_all
-  # has_many :asked_questions, class_name: 'Question', foreign_key: :author_id
 
   before_validation :downcase_nickname
+  after_commit :update_posted_questions, on: :update, if: :saved_change_to_nickname?
 
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w.]+@[\w]+\.[a-z]+\z/ }
   validates :nickname, presence: true, uniqueness: true, format: { with: /\A\w+\z/ }, length: { maximum: 40 }
@@ -18,5 +18,9 @@ class User < ApplicationRecord
 
   def downcase_nickname
     nickname&.downcase!
+  end
+
+  def update_posted_questions
+    Question.where(user: self).update_all(user_nickname: nickname)
   end
 end

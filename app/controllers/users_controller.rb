@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[update show edit update destroy]
   before_action :authorize_user, only: %i[edit delete]
+
   def create
     if @user.save && @user&.nickname
       session[:user_id] = @user.id
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @questions = Question.where(author: @user)
+    @questions = Question.where(user: @user)
   end
 
   def update

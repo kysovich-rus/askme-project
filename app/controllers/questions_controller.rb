@@ -3,6 +3,7 @@ class QuestionsController < ApplicationController
 
   def create 
     @question = Question.create(question_params)
+    @question.user = User.find_by(nickname: question_params[:user_nickname])
 
     if @question.save
       redirect_to question_path(@question), notice: 'Вопрос создан'
@@ -53,7 +54,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:body, :user_id, :author_id)
+    params.require(:question).permit(:body, :user_nickname, :author_id)
   end
 
   def set_question
