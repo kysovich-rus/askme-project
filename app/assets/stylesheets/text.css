@@ -51,6 +51,10 @@ a, button {
     font-weight: bold;
 }
 
+.text-dark-red {
+    color: #9D0208;
+}
+
 .text-red {
     color: #d00000;
 }
