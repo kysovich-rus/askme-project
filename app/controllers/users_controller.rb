@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    session[:current_time] = Time.now
     @user = User.new
   end
 
@@ -27,7 +28,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @questions = Question.where(user: @user)
+    @questions = @user.questions.order(created_at: :desc).last(10)
+    @question = Question.new(user: @user)
   end
 
   def update

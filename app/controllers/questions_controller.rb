@@ -3,27 +3,28 @@ class QuestionsController < ApplicationController
 
   def create 
     @question = Question.create(question_params)
-    @question.user = User.find_by(nickname: question_params[:user_nickname])
+    @question.user = User.find(question_params[:user_id])
+    @question.author = current_user
 
     if @question.save
-      redirect_to question_path(@question), notice: 'Вопрос создан'
+      redirect_to user_path(@question.user), notice: 'Вопрос создан'
     else
       flash.now[:alert] = 'Не удалось создать новый вопрос'
       render :new
     end
-
   end
 
   def update
     @question.update(question_params)
 
-    redirect_to question_path(@question)
+    redirect_to user_path(@question.user), notice: 'Вопрос сохранен'
   end
 
   def destroy
+    user = @question.user
     @question.destroy
 
-    redirect_to questions_path
+    redirect_to user_path(user), notice: 'Вопрос удален'
   end
 
   def show
@@ -36,7 +37,9 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new
+    @user = User.find(params[:user_id])
+    @question = Question.new(user: @user)
+
   end
 
   def edit
@@ -54,7 +57,7 @@ class QuestionsController < ApplicationController
   private
 
   def question_params
-    params.require(:question).permit(:body, :user_nickname, :author_id)
+    params.require(:question).permit(:body, :user_id)
   end
 
   def set_question

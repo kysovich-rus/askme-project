@@ -6,6 +6,16 @@
   </div>
 </div>
 
+<div class="container mt-md">
+  <div class="container">
+    <h2 class="title-sm">Спросите у <%= link_name(@user) %>:</h2>
+
+    <p class="mt">
+      <%= render 'questions/form', question: @question, user: @user %>
+    </p>
+  </div>
+</div>
+
 <div class="container mt-sm">
   <div class="container">
     <% if @questions.count.zero? %>

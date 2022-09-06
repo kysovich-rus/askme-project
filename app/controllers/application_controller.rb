@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_to_root_with_alert
-    redirect_to root_path, alert: "Доступ запрещен!"
+    redirect_to root_path, alert: 'Доступ запрещен!'
   end
 end
