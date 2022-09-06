@@ -2,17 +2,20 @@
   <div class="container">
     <h2 class="title-lg mb-md">Пользователь <%= link_name(@user) %></h2>
     <p class="text-md">Зарегистрирован: <%= l(@user.created_at, format: :long) %></p>
-    <%= link_to "Изменить", edit_user_path(@user), class: "button button-yellow mt-lg" %>
+    <%= link_to "Изменить", edit_user_path(@user),
+                class: "button button-yellow mt-lg" %>
   </div>
 </div>
 
 <div class="container mt-md">
   <div class="container">
-    <h2 class="title-sm">Спросите у <%= link_name(@user) %>:</h2>
-
-    <p class="mt">
+    <h2 class="title-md">Спросите что-нибудь:</h2>
+    <p class="mb">
       <%= render 'questions/form', question: @question, user: @user %>
     </p>
+
+    <%= link_to "Открыть форму", new_question_path(user_id: @user.id),
+                    class: "button button-yellow mt"%>
   </div>
 </div>
 

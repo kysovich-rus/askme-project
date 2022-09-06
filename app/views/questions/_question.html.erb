@@ -29,7 +29,7 @@
       <%= button_to fa_icon('eye-slash'), toggle_question_path(question), method: :patch, title: 'Скрыть вопрос' %>
     <% end %>
 
-    <%= link_to fa_icon('pencil'), edit_question_path(question),
+    <%= link_to fa_icon('pencil'), edit_question_path(id: question.id, user_id: question.user.id),
                 title: 'Изменить вопрос' %>
     <%= button_to fa_icon('trash-o'), question_path(question),
                   method: :delete, title: 'Удалить вопрос',

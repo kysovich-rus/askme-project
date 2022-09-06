@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
       redirect_to user_path(@question.user), notice: 'Вопрос создан'
     else
       flash.now[:alert] = 'Не удалось создать новый вопрос'
-      render :new
+      redirect_to new_question_path(user_id: @question.user.id), alert: 'Не удалось создать вопрос'
     end
   end
 
@@ -32,17 +32,16 @@ class QuestionsController < ApplicationController
 
   def index
     @users = User.order(created_at: :desc).last(10)
-    @question = Question.new
     @questions = Question.order(created_at: :desc).last(10)
   end
 
   def new
     @user = User.find(params[:user_id])
     @question = Question.new(user: @user)
-
   end
 
   def edit
+    @user = User.find(params[:user_id])
   end
 
   def toggle

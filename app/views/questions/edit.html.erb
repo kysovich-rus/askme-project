@@ -1,6 +1,6 @@
 <div class="container">
-  <h2 class="title-lg mb">Редактирование вопроса <%= @question.id %></h2>
-
+  <h2 class="title-md">Изменение вопроса №<%= @question.id %></h2>
+  <p class="text-md mb-md">для <%= link_to link_name(@user), @user %></p>
   <%= render 'alarm', question: @question %>
 
   <%= render 'form', question: @question %>
