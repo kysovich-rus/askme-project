@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :authorize_user, only: %i[edit delete]
 
   def create
+    @user = User.create(user_params)
     if @user.save && @user&.nickname
       session[:user_id] = @user.id
       redirect_to root_path, notice: 'Регистрация успешно завершена!'

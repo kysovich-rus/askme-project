@@ -15,6 +15,7 @@
         <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
         <%= @questions.count %>
         <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+        <span> для этого пользователя:</span>
       </h2>
       <%= render @questions %>
     <% end %>
