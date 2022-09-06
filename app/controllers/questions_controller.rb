@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
     @question.author = current_user
 
     if @question.save
-      redirect_to user_path(@question.user), notice: 'Вопрос создан'
+      redirect_to @question.user, notice: 'Вопрос создан'
     else
       flash.now[:alert] = 'Не удалось создать новый вопрос'
       redirect_to new_question_path(user_id: @question.user.id), alert: 'Не удалось создать вопрос'
@@ -17,14 +17,14 @@ class QuestionsController < ApplicationController
   def update
     @question.update(question_params)
 
-    redirect_to user_path(@question.user), notice: 'Вопрос сохранен'
+    redirect_to @question.user, notice: 'Вопрос сохранен'
   end
 
   def destroy
     user = @question.user
     @question.destroy
 
-    redirect_to user_path(user), notice: 'Вопрос удален'
+    redirect_to user, notice: 'Вопрос удален'
   end
 
   def show

@@ -7,6 +7,10 @@ a, button {
   color: #DC2F02;
 }
 
+.center {
+    text-align: center;
+}
+
 .message {
     border-radius: 5px;
     
@@ -53,4 +57,9 @@ a, button {
 
 .text-grey {
     color: #a0a0a0;
+}
+
+.text-light {
+    color: #ffffff;
+    text-shadow: 1px 1px 4px #2E2F30;
 }

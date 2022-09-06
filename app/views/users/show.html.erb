@@ -1,11 +1,16 @@
-<div class="container">
-  <div class="container">
-    <h2 class="title-lg mb-md">Пользователь <%= link_name(@user) %></h2>
-    <p class="text-md">Зарегистрирован: <%= l(@user.created_at, format: :long) %></p>
-    <%= link_to "Изменить", edit_user_path(@user),
-                class: "button button-yellow mt-lg" %>
-  </div>
+<% background_class = "users-box-user-bg#{@user.id % 5}" %>
+<div class="container center <%= background_class %> text-light">
+  <h2 class="title-lg"><%= @user.real_name %></h2>
+  <h2 class="title-md mb-md"><%= link_name(@user) %></h2>
+  <p class="text-sm">Зарегистрирован: <%= l(@user.created_at, format: :long) %></p>
 </div>
+
+<% if current_user == @user %>
+  <div class="container">
+    <%= link_to "Изменить", edit_user_path(@user),
+                class: "button button-yellow" %>
+  </div>
+<% end %>
 
 <div class="container mt-md">
   <div class="container">
