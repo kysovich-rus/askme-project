@@ -29,7 +29,7 @@
 <div class="container mt-sm">
   <div class="container">
     <% if @questions.count.zero? %>
-      <p class="text-sm">Этому пользователю еще не задавали вопросов...</p>
+      <p class="text-sm">Этому пользователю, похоже, еще не задавали вопросов...</p>
     <% else %>
       <h2 class="title-lg mb">
         <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>

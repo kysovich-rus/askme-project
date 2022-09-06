@@ -28,7 +28,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    @questions = @user.questions.order(created_at: :desc).last(10)
+    @questions = Question.where(user: @user).where(hidden: false)
+    if current_user.present? && current_user == @user
+      @questions = Question.where(user: @user)
+    end
     @question = Question.new(user: @user)
   end
 
