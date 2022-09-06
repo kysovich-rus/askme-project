@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
 
-  def redirect_to_root_with_alert
+  def redirect_with_alert
     redirect_to root_path, alert: 'Доступ запрещен!'
   end
 end

@@ -52,7 +52,7 @@ class UsersController < ApplicationController
   private
 
   def authorize_user
-    redirect_to_root_with_alert unless current_user == @user
+    redirect_with_alert unless current_user == @user
   end
 
   def set_user

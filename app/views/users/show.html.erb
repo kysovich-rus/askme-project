@@ -1,26 +1,28 @@
 <% background_class = "users-box-user-bg#{@user.id % 5}" %>
 <div class="container center <%= background_class %> text-light">
-  <h2 class="title-lg"><%= @user.real_name %></h2>
+  <h2 class="title-lg">
+    <%= @user.real_name %>
+    <% if current_user == @user %>
+      <span>
+        <%= link_to fa_icon('pencil'), edit_user_path(@user),
+                    class: 'text-sm text-light', title: 'Редактировать профиль' %>
+      </span>
+      <p class="text-sm">(Это вы!)</p>
+    <% end %>
+  </h2>
   <h2 class="title-md mb-md"><%= link_name(@user) %></h2>
   <p class="text-sm">Зарегистрирован: <%= l(@user.created_at, format: :long) %></p>
 </div>
 
-<% if current_user == @user %>
-  <div class="container">
-    <%= link_to "Изменить", edit_user_path(@user),
-                class: "button button-yellow" %>
-  </div>
-<% end %>
-
 <div class="container mt-md">
   <div class="container">
-    <h2 class="title-md">Спросите что-нибудь:</h2>
+    <%= link_to "Спросите что-нибудь", new_question_path(user_id: @user.id),
+                class: "button button-yellow"%>
     <p class="mb">
       <%= render 'questions/form', question: @question, user: @user %>
     </p>
 
-    <%= link_to "Открыть форму", new_question_path(user_id: @user.id),
-                    class: "button button-yellow mt"%>
+
   </div>
 </div>
 
