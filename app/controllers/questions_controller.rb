@@ -5,8 +5,7 @@ class QuestionsController < ApplicationController
   def create
     question_params = params.require(:question).permit(:body, :user_id)
 
-    @question = Question.create(question_params)
-    @question.user = User.find(question_params[:user_id])
+    @question = Question.new(question_params)
     @question.author = current_user
 
     if @question.save
