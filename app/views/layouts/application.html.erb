@@ -21,7 +21,7 @@
             <%= link_to "#{link_name(current_user)}", user_path(current_user), class: 'mr-sm' %>
             <%= button_to 'Выход', session_path, method: :delete, class: 'button button-yellow' %>
           <% else %>
-            <%= link_to 'Регистрация', users_new_path, class: 'button button-yellow mr-sm' %>
+            <%= link_to 'Регистрация', new_user_path, class: 'button button-yellow mr-sm' %>
             <%= link_to 'Вход', new_session_path, class: 'button button-yellow' %>
           <% end %>
         </div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   get 'sessions/create'
   get 'sessions/new'
+  get 'sessions/destroy'
   get 'users/create'
   get 'users/new'
   root to: 'questions#index'
@@ -13,5 +14,5 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: %i[index], param: :nickname
-  resource :session
+  resource :session, only: %i[new create destroy]
 end

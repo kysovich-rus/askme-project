@@ -41,6 +41,8 @@ gem "bcrypt", "~> 3.1.7"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "recaptcha", require: "recaptcha/rails"
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
