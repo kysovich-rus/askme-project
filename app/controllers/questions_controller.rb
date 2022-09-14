@@ -40,8 +40,8 @@ class QuestionsController < ApplicationController
   def index
     @users = User.order(created_at: :desc).last(10)
     @questions = (
-      Question.where(hidden: false)
-              .or(Question.where(user: current_user).where(hidden: true))
+      Question.includes(:user).where(hidden: false)
+              .or(Question.includes(:user).where(user: current_user).where(hidden: true))
     ).order(created_at: :desc).last(10)
     @hashtags = Hashtag.with_questions.order(created_at: :desc).last(10)
   end
