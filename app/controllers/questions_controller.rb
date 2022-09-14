@@ -12,7 +12,7 @@ class QuestionsController < ApplicationController
       redirect_to @question.user, notice: 'Вопрос создан'
     else
       flash.now[:alert] = 'Не удалось создать новый вопрос'
-      redirect_to new_question_path(user_id: @question.user.id), alert: 'Не удалось создать вопрос'
+      redirect_to new_question_path(user_id: question_params[:user_id]), alert: 'Не удалось создать вопрос'
     end
   end
 
