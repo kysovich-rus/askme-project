@@ -10,3 +10,7 @@
     flex-direction: column;
     justify-content: flex-start;
 }
+
+.question-text {
+    white-space: pre-line;
+}

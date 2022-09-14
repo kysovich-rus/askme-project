@@ -94,6 +94,7 @@ GEM
       railties (>= 3.2, < 8.0)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    gravtastic (3.2.6)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.0.1)
@@ -211,6 +212,8 @@ GEM
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    where_exists (2.0.1)
+      activerecord (>= 5.2, < 7.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.5.3)
@@ -224,6 +227,7 @@ DEPENDENCIES
   capybara
   debug
   font-awesome-rails
+  gravtastic
   importmap-rails
   jbuilder
   pg
@@ -236,6 +240,7 @@ DEPENDENCIES
   turbo-rails
   web-console
   webdrivers
+  where_exists
 
 RUBY VERSION
    ruby 3.0.2p107

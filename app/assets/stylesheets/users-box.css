@@ -17,22 +17,22 @@
     text-decoration: none;
 }
 
-.users-box-user-bg0 {
-    background-color: #d00000;
+.users-box-user-bd0 {
+    border: 3px solid #d00000;
 }
 
-.users-box-user-bg1 {
-    background-color: #03071E;
+.users-box-user-bd1 {
+    border: 3px solid #03071E;
 }
 
-.users-box-user-bg2 {
-    background-color: #ffba08;
+.users-box-user-bd2 {
+    border: 3px solid #FFBB33;
 }
 
-.users-box-user-bg3 {
-    background-color: #6A040F;
+.users-box-user-bd3 {
+    border: 3px solid #6A040F;
 }
 
-.users-box-user-bg4 {
-    background-color: #f48c06;
+.users-box-user-bd4 {
+    border: 3px solid #DC2F02;
 }

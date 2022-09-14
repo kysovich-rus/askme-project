@@ -1,0 +1,8 @@
+<div class="container">
+  <h2 class="title-lg">Вопросы по тэгу: #<%= @hashtag.text %></h2>
+</div>
+<% @questions.each do |question| %>
+  <div class="container mb-sm mt-sm">
+    <%= render question %>
+  </div>
+<% end %>

@@ -1,17 +1,25 @@
-<% background_class = "users-box-user-bg#{@user.id % 5}" %>
-<div class="container center <%= background_class %> text-light">
-  <h2 class="title-lg">
+<div class="user-box text-light">
+  <h2 class="title-lg mt-lg">
     <%= @user.real_name %>
+    <% if @user == current_user %>
+      <span class="text-sm">(Это вы!)</span>
+    <% end %>
+  </h2>
+
+  <div class="mt">
+    <%= render partial: 'users/user_avatar', locals: {user: @user} %>
+  </div>
+
+  <h2 class="title-md mt mb">
+    <%= link_name(@user) %>
     <% if current_user == @user %>
       <span>
         <%= link_to fa_icon('pencil'), edit_user_path(@user),
                     class: 'text-sm text-light', title: 'Редактировать профиль' %>
       </span>
-      <p class="text-sm">(Это вы!)</p>
     <% end %>
   </h2>
-  <h2 class="title-md mb-md"><%= link_name(@user) %></h2>
-  <p class="text-sm">Зарегистрирован: <%= l(@user.created_at, format: :long) %></p>
+  <p class="text-sm mb-lg">Зарегистрирован: <%= l(@user.created_at, format: :long) %></p>
 </div>
 
 <div class="container mt-md">
@@ -25,17 +33,20 @@
 </div>
 
 <div class="container mt-sm">
-  <div class="container">
-    <% if @questions.count.zero? %>
-      <p class="text-sm">Этому пользователю, похоже, еще не задавали вопросов...</p>
-    <% else %>
-      <h2 class="title-lg mb">
-        <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
-        <%= @questions.count %>
-        <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
-        <span> для этого пользователя:</span>
-      </h2>
-      <%= render @questions %>
-    <% end %>
-  </div>
+  <% if @questions.count.zero? %>
+    <p class="text-sm">Этому пользователю, похоже, еще не задавали вопросов...</p>
+  <% else %>
+    <h2 class="title-lg">
+      <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
+      <%= @questions.count %>
+      <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
+      <span> для этого пользователя:</span>
+    </h2>
+  <% end %>
 </div>
+
+<% @questions.each do |question| %>
+  <div class="container mb-sm mt-sm">
+    <%= render question %>
+  </div>
+<% end %>

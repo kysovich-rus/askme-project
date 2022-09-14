@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_secure_password
+  include Gravtastic
 
+  has_secure_password
   has_many :questions, dependent: :delete_all
 
   before_validation :downcase_nickname
@@ -9,6 +10,8 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true, format: { with: /\A[\w.]+@[\w]+\.[a-z]+\z/ }
   validates :nickname, presence: true, uniqueness: true, format: { with: /\A\w+\z/ }, length: { maximum: 40 }
   validates :header_color, format: { with: /\A#[0-9a-f]{6}\z/i }
+
+  gravtastic(secure: true, filetype: [:png, :jpg], size: 100, default: 'retro')
 
   def to_param
     nickname

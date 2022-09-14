@@ -10,6 +10,11 @@
   <% end %>
 
   <div class="mt">
+    <p><%= image_tag @user.gravatar_url, title: link_name(@user), class: 'rounded' %></p>
+    <p class="text-sm">Чтобы добавить или поменять аватар - зарегистрируйтесь на <%= link_to "Gravatar", "https://gravatar.com" %> и загрузите свое изображение</p>
+  </div>
+
+  <div class="mt">
     <%= form_with model: @user, data: {turbo: false} do |form| %>
       <p><%= form.label :real_name, 'Имя' %></p>
       <p><%= form.text_field :real_name, class: 'form-text-field' %></p>

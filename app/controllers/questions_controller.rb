@@ -5,10 +5,10 @@ class QuestionsController < ApplicationController
   def create
     question_params = params.require(:question).permit(:body, :user_id)
 
-    @question = Question.new(question_params)
+    @question = Question.new
     @question.author = current_user
 
-    if check_captcha(@question) && @question.save
+    if check_captcha(@question) && QuestionSave.(question: @question, params: question_params)
       redirect_to @question.user, notice: 'Вопрос создан'
     else
       flash.now[:alert] = 'Не удалось создать новый вопрос'
@@ -18,9 +18,12 @@ class QuestionsController < ApplicationController
 
   def update
     question_params = params.require(:question).permit(:body, :answer)
-    @question.update(question_params)
 
-    redirect_to @question.user, notice: 'Вопрос сохранен'
+    if check_captcha(@question) && QuestionSave.(question: @question, params: question_params)
+      redirect_to @question.user, notice: 'Вопрос сохранен'
+    else
+      render :edit
+    end
   end
 
   def destroy
@@ -40,6 +43,7 @@ class QuestionsController < ApplicationController
       Question.where(hidden: false)
               .or(Question.where(user: current_user).where(hidden: true))
     ).order(created_at: :desc).last(10)
+    @hashtags = Hashtag.with_questions.order(created_at: :desc).last(10)
   end
 
   def new

@@ -1,32 +1,47 @@
-<div class="container">
-  <h2 class="title-lg mb">
-    Новые пользователи
-  </h2>
-  <div class="users-box">
-    <% @users.each do |user| %>
-      <%= render "users/user_avatar", user: user%>
-    <% end %>
-  </div>
-</div>
-
-<div class="container">
-  <% if current_user.nil? %>
-    <p class="text-sm mb">
+<% if current_user.nil? %>
+  <div class="container mb-sm">
+    <p class="text-sm">
       Здравствуйте, Гость!
       <%= link_to "Зарегистрируйтесь", new_user_path %>
       или
       <%= link_to "войдите", sessions_new_path %>,
       чтобы получать вопросы и отвечать на них.
     </p>
-  <% end %>
+  </div>
+<% end %>
+
+<div class="container mb">
+  <h2 class="title-lg mb">
+    Новые пользователи
+  </h2>
+  <div class="users-box">
+    <% @users.each do |user| %>
+      <%= render "users/user_avatar", user: user %>
+    <% end %>
+  </div>
+</div>
+
+<div class="container mb-sm">
+  <h2 class="title-lg">
+    Свежие тэги
+  </h2>
+  <%= render @hashtags %>
+</div>
+
+<div class="container">
   <% if @questions.count.zero? %>
     <p class="text-sm">Никто еще не задавал вопросов... <%= link_to "Хотите спросить?", new_question_path %></p>
   <% else %>
-    <h2 class="title-lg mb">
+    <h2 class="title-lg">
       <%= inclination(@questions.count, 'Последний', 'Последние', 'Последние') %>
       <%= @questions.count %>
       <%= inclination(@questions.count, 'вопрос', 'вопроса', 'вопросов') %>
     </h2>
-    <%= render @questions %>
   <% end %>
 </div>
+
+<% @questions.each do |question| %>
+  <div class="container mb-sm mt-sm">
+    <%= render question %>
+  </div>
+<% end %>

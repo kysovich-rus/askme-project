@@ -7,17 +7,17 @@
    </p>
 </div>
 
-<div class="mt-sm mb-sm <%= "text-hidden" if question.hidden? %>">
-  <%= simple_format h(question.body) %>
+<div class="mb-sm question-text <%= "text-hidden" if question.hidden? %>">
+  <%= sanitize text_with_hashtag_link(question.body) %>
 </div>
 
 <% if question.answer.present? %>
-  <div class="mb-sm text-dark-red <%= "text-hidden" if question.hidden? %> text-bold">
-    <%= question.answer %>
+  <div class="mb-sm text-dark-red question-text <%= "text-hidden" if question.hidden? %> text-bold">
+    <%= sanitize text_with_hashtag_link(question.answer) %>
   </div>
 <% end %>
 
-<div class="text-sm question-footer mb-lg">
+<div class="text-sm question-footer">
   <div class="text-grey">
     <%= fa_icon('eye-slash') if question.hidden? %>
     <% if question.author.present? %>
