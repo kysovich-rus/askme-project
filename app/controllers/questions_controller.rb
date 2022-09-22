@@ -39,10 +39,7 @@ class QuestionsController < ApplicationController
 
   def index
     @users = User.order(created_at: :desc).limit(10)
-    @questions = (
-      Question.includes(:user).where(hidden: false)
-              .or(Question.includes(:user).where(user: current_user).where(hidden: true))
-    ).order(created_at: :desc).limit(10)
+    @questions = Question.visible(current_user).order(created_at: :desc).limit(10)
     @hashtags = Hashtag.with_questions.order(created_at: :desc).limit(10)
   end
 
