@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @question.author = current_user
 
-    if check_captcha(@question) && QuestionSave.(question: @question, params: question_params)
+    if check_captcha(@question) && QuestionSave.new(question: @question, params: question_params).call
       redirect_to @question.user, notice: 'Вопрос создан'
     else
       flash.now[:alert] = 'Не удалось создать новый вопрос'
@@ -19,7 +19,7 @@ class QuestionsController < ApplicationController
   def update
     question_params = params.require(:question).permit(:body, :answer)
 
-    if check_captcha(@question) && QuestionSave.(question: @question, params: question_params)
+    if check_captcha(@question) && QuestionSave.new(question: @question, params: question_params).call
       redirect_to @question.user, notice: 'Вопрос сохранен'
     else
       render :edit

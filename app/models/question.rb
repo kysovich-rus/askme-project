@@ -12,8 +12,4 @@ class Question < ApplicationRecord
     Question.includes(:user).where(hidden: false)
             .or(Question.where(user: current_user).where(hidden: true))
   }
-
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-  end
 end
